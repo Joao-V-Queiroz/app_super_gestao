@@ -23,6 +23,19 @@ Route::prefix('/app')->group(function(){
 });
 
 
+Route::get('/rota1', function(){
+   echo 'Rota 1';
+})->name('site.rota1');
+
+//as duas formas de se redirecionar uma rota
+//usando redirect pelo objetivo route ou dentro da função de callback
+Route::get('/rota2', function(){
+  return redirect()->route('site.rota1');
+})->name('site.rota2');
+//aula 38, trabalhando com redirecionamento de rotas
+// Route::redirect('/rota2', '/rota1');
+
+
 
 /* 
 Métodos http
