@@ -9,20 +9,17 @@ use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\FornecedoresController;
 use App\Http\Controllers\ProdutosController;
 
-Route::get('/', [PrincipalController::class, 'principal']);
-
-Route::get('/sobre-nos', [SobreNosController::class, 'sobreNos']);
-
-Route::get('/contato', [ContatoController::class, 'contato']);
-
-//novas rotas adicionadas, aula 35
-Route::get('/login',   [LoginController::class, 'login']);
+//nomeando rotas, aula 37, use o método ->name(), após a rota
+Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
+Route::get('/sobre-nos', [SobreNosController::class, 'sobreNos'])->name('site.sobrenos');
+Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
+Route::get('/login',   [LoginController::class, 'login'])->name('site.login');
 
 //agrupamento de rotas, aula 36, agrupando rotas dentro do prefixo /app
 Route::prefix('/app')->group(function(){
-  Route::get('/clientes', [ClientesController::class, 'clientes']);
-  Route::get('/fornecedores', [FornecedoresController::class, 'fornecedores']);
-  Route::get('/produtos', [ProdutosController::class, 'produtos']);
+  Route::get('/clientes', [ClientesController::class, 'clientes'])->name('app.clientes');
+  Route::get('/fornecedores', [FornecedoresController::class, 'fornecedores'])->name('app.fornecedores');
+  Route::get('/produtos', [ProdutosController::class, 'produtos'])->name('app.produtos');
 });
 
 
