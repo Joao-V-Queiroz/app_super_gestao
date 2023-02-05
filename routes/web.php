@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\FornecedoresController;
+use App\Http\Controllers\ProdutosController;
 
 Route::get('/', [PrincipalController::class, 'principal']);
 
@@ -11,15 +15,17 @@ Route::get('/sobre-nos', [SobreNosController::class, 'sobreNos']);
 
 Route::get('/contato', [ContatoController::class, 'contato']);
 
-Route::get('/contato/{nome}/{categoria_id}', //
-function(
-  string $nome = 'Desconhecido',
-  int $categoria_id = 1 // 1 - 'informação'
-) 
-  {
-   echo "Estamos aqui: $nome - $categoria_id" ;      
-  }
-)->where('categoria_id', '[0-9]+')->where('nome','[A-Za-z]+');
+//novas rotas adicionadas, aula 35
+Route::get('/login',   [LoginController::class, 'login']);
+
+//agrupamento de rotas, aula 36, agrupando rotas dentro do prefixo /app
+Route::prefix('/app')->group(function(){
+  Route::get('/clientes', [ClientesController::class, 'clientes']);
+  Route::get('/fornecedores', [FornecedoresController::class, 'fornecedores']);
+  Route::get('/produtos', [ProdutosController::class, 'produtos']);
+});
+
+
 
 /* 
 Métodos http
@@ -51,3 +57,15 @@ options
 // Route::get('/contato', function () {
 //     return 'contato';
 // });
+
+//categoria_id, terá que ser números inteiros
+//nome só poderá receber caracteres, maiúsculos ou minúsculos
+// Route::get('/contato/{nome}/{categoria_id}', //
+// function(
+//   string $nome = 'Desconhecido',
+//   int $categoria_id = 1 // 1 - 'informação'
+// ) 
+//   {
+//    echo "Estamos aqui: $nome - $categoria_id" ;      
+//   }
+// )->where('categoria_id', '[0-9]+')->where('nome','[A-Za-z]+');
