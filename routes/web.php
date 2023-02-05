@@ -22,20 +22,13 @@ Route::prefix('/app')->group(function(){
   Route::get('/produtos', [ProdutosController::class, 'produtos'])->name('app.produtos');
 });
 
-
-Route::get('/rota1', function(){
-   echo 'Rota 1';
-})->name('site.rota1');
-
-//as duas formas de se redirecionar uma rota
-//usando redirect pelo objetivo route ou dentro da função de callback
-Route::get('/rota2', function(){
-  return redirect()->route('site.rota1');
-})->name('site.rota2');
-//aula 38, trabalhando com redirecionamento de rotas
-// Route::redirect('/rota2', '/rota1');
-
-
+//rota que irá ser chamada, quando o usuário tentar acessar uma rota inexistente
+//usar função fallback
+Route::fallback(function(){
+ echo 'A rota acessada não existe.
+  <a href="'.route('site.index').'">Clique aqui</a> para ir a página inicial
+ ';
+});
 
 /* 
 Métodos http
@@ -79,3 +72,14 @@ options
 //    echo "Estamos aqui: $nome - $categoria_id" ;      
 //   }
 // )->where('categoria_id', '[0-9]+')->where('nome','[A-Za-z]+');
+
+//as duas formas de se redirecionar uma rota
+// //usando redirect pelo objetivo route ou dentro da função de callback
+// Route::get('/rota1', function(){
+//    echo 'Rota 1';
+// })->name('site.rota1');
+// Route::get('/rota2', function(){
+//   return redirect()->route('site.rota1');
+// })->name('site.rota2');
+//aula 38, trabalhando com redirecionamento de rotas
+// Route::redirect('/rota2', '/rota1');
