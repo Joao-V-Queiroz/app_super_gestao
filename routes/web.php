@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\FornecedoresController;
 use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\TesteController;
 
 //nomeando rotas, aula 37, use o método ->name(), após a rota
 Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
@@ -21,6 +22,9 @@ Route::prefix('/app')->group(function(){
   Route::get('/fornecedores', [FornecedoresController::class, 'fornecedores'])->name('app.fornecedores');
   Route::get('/produtos', [ProdutosController::class, 'produtos'])->name('app.produtos');
 });
+
+//teste
+Route::get('/teste/{p1}/{p2}',   [TesteController::class, 'teste'])->name('site.teste');
 
 //rota que irá ser chamada, quando o usuário tentar acessar uma rota inexistente
 //usar função fallback
