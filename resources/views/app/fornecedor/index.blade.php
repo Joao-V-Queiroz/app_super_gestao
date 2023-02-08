@@ -13,12 +13,12 @@
   /*
      Comentários de múltiplas linhas 
   */
-{{-- if(){
-}else if(){
+// {{-- if(){
+// }else if(){
 
-}else {
+// }else {
 
-} --}}
+// } --}};
 
 ?>
 {{-- dd inspenciona uma váriavel e nos mostra um print do que ela contém em tela--}}
