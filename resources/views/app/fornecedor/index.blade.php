@@ -13,13 +13,6 @@
   /*
      Comentários de múltiplas linhas 
   */
-// {{-- if(){
-// }else if(){
-
-// }else {
-
-// } --}};
-
 ?>
 {{-- dd inspenciona uma váriavel e nos mostra um print do que ela contém em tela--}}
 {{-- @dd($fornecedores) --}}
