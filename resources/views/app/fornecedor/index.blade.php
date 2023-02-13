@@ -8,15 +8,38 @@
 {{' Olá Mundo! '}}
 
 <?php
-
   //Comentários de uma linha
   /*
      Comentários de múltiplas linhas 
   */
+  
+  /* 
+     if(!<condicao>) {} //enquanto executa se o retorno for true  
+  */
+ 
+
+
 ?>
+
+{{-- @unless executa se o retorno for false --}}
+Fornecedor: {{ $fornecedores[0]['nome'] }}
+<br>
+Status: {{ $fornecedores[0]['status'] }}
+<br>
+@if(! ($fornecedores[0]['status'] == 'S') )
+ Fornecedor Inativo
+@endif
+<br> 
+@unless($fornecedores[0]['status'] == 'S') <!-- se o retorno da condição for false -->
+ Fornecedor Inativo
+@endunless
+<br> 
 {{-- dd inspenciona uma váriavel e nos mostra um print do que ela contém em tela--}}
+{{-- @dd($fornecedores); --}}
 {{-- @dd($fornecedores) --}}
 
+
+{{-- Como usar o if e else --}}
 @if(count($fornecedores) > 0 && count($fornecedores) < 10 )
 <h3>Existem alguns fornecedores cadastrados</h3>
 @elseif(count($fornecedores) > 10)
