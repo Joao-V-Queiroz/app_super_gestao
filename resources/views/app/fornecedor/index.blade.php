@@ -52,6 +52,7 @@ Cnpj: {{ $fornecedores[1]['cnpj'] }}
 @endisset
 <br>
 
+
 <!-- if(isset($variavel)) {} //retorna true se a variavel estiver definida, não se importando com seu valor -->
 
 <!-- if(empty($variavel)) {} //retorna true se a variavel estiver vazia

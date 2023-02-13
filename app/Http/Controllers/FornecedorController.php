@@ -19,8 +19,15 @@ class FornecedorController extends Controller
          'status' => 'S', 
        ],
     ];
-    
-       return view('app.fornecedor.index', compact('fornecedores'));
+
+    /* operador ternário (atalho para o if e else), recurso do php, independente de laravel ou blade, podemos usar de qualquer lugar
+    condicao ? se verdade : se falso;
+    é possível realizar encadiamentos condicao ? se verdade : (condicao ? se verdade : se falso); 
+    */
+   $msg = isset($fornecedores[0]['cnpj']) ? 'CNPJ informado' : 'CNPJ não informado';
+   echo $msg;
+
+   return view('app.fornecedor.index', compact('fornecedores'));
       // return view('app.fornecedor.index');
     }
 }
