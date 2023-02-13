@@ -22,10 +22,18 @@
 ?>
 
 {{-- @unless executa se o retorno for false --}}
+@isset($fornecedores)
+{{-- Imprimindo valores existentes dentro do array --}}
 Fornecedor: {{ $fornecedores[0]['nome'] }}
 <br>
 Status: {{ $fornecedores[0]['status'] }}
 <br>
+Cnpj: {{ $fornecedores[0]['cnpj'] }}
+<br>
+{{-- testes sendo feitos na segunda posição do array --}}
+@isset($fornecedores[1]['cnpj']) {{-- testando se esta informação é informada ou não --}}
+Cnpj: {{ $fornecedores[1]['cnpj'] }}
+@endisset
 @if(! ($fornecedores[0]['status'] == 'S') )
  Fornecedor Inativo
 @endif
@@ -33,13 +41,17 @@ Status: {{ $fornecedores[0]['status'] }}
 @unless($fornecedores[0]['status'] == 'S') <!-- se o retorno da condição for false -->
  Fornecedor Inativo
 @endunless
-<br> 
+@endisset
+<br>
+
+<!-- if(isset($variavel)) {} //retorna true se a variavel estiver definida, não se importando com seu valor -->
+
+
 {{-- dd inspenciona uma váriavel e nos mostra um print do que ela contém em tela--}}
 {{-- @dd($fornecedores); --}}
 {{-- @dd($fornecedores) --}}
-
-
 {{-- Como usar o if e else --}}
+@isset($fornecedores)
 @if(count($fornecedores) > 0 && count($fornecedores) < 10 )
 <h3>Existem alguns fornecedores cadastrados</h3>
 @elseif(count($fornecedores) > 10)
@@ -47,3 +59,4 @@ Status: {{ $fornecedores[0]['status'] }}
 @else 
 <h3>Ainda não existem fornecedores cadastrados</h3>
 @endif
+@endisset
