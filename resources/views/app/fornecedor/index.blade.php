@@ -49,6 +49,16 @@ Cnpj: {{ $fornecedores[1]['cnpj'] }}
 @unless($fornecedores[0]['status'] == 'S') <!-- se o retorno da condição for false -->
  Fornecedor Inativo
 @endunless
+<br><br>
+{{-- Aula 50, Operador condicional de valor Default --}}
+Condicional de valor Default: <br>
+CNPJ: {{$fornecedores[1]['cnpj'] ?? 'Dado não foi preenchido'}}
+<!-- 
+$variavel testada não estiver definida (isset)
+ou 
+$variavel testada possui o valor null 
+-->
+
 @endisset
 <br>
 
