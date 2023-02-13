@@ -29,6 +29,14 @@ Fornecedor: {{ $fornecedores[0]['nome'] }}
 Status: {{ $fornecedores[0]['status'] }}
 <br>
 Cnpj: {{ $fornecedores[0]['cnpj'] }}
+{{-- Verificando se a variável está ou não vazia! --}}
+@empty($fornecedores[0]['cnpj'])
+- Vazio
+@endempty
+{{-- Se a vaiavel ou posição do array possuir um valor --}}
+@empty(!($fornecedores[0]['cnpj']))
+- Não Vazio
+@endempty
 <br>
 {{-- testes sendo feitos na segunda posição do array --}}
 @isset($fornecedores[1]['cnpj']) {{-- testando se esta informação é informada ou não --}}
@@ -46,7 +54,17 @@ Cnpj: {{ $fornecedores[1]['cnpj'] }}
 
 <!-- if(isset($variavel)) {} //retorna true se a variavel estiver definida, não se importando com seu valor -->
 
-
+<!-- if(empty($variavel)) {} //retorna true se a variavel estiver vazia
+ Quando ela é vazia para o php? Nas seguintes situações:
+ - 0
+ - 0.0
+ - '0'
+ - null
+ - false
+ - array()
+ - $var
+ -->
+ 
 {{-- dd inspenciona uma váriavel e nos mostra um print do que ela contém em tela--}}
 {{-- @dd($fornecedores); --}}
 {{-- @dd($fornecedores) --}}
