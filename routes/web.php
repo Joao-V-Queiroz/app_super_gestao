@@ -24,7 +24,7 @@ Route::prefix('/app')->group(function(){
 });
 
 //teste
-Route::get('/teste/{p1}/{p2}',   [TesteController::class, 'teste'])->name('site.teste');
+Route::get('/teste',   [TesteController::class, 'teste'])->name('site.teste');
 
 //rota que irá ser chamada, quando o usuário tentar acessar uma rota inexistente
 //usar função fallback
