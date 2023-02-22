@@ -62,7 +62,6 @@ $variavel testada possui o valor null
 @endisset
 <br>
 
-
 <!-- if(isset($variavel)) {} //retorna true se a variavel estiver definida, não se importando com seu valor -->
 
 <!-- if(empty($variavel)) {} //retorna true se a variavel estiver vazia
@@ -79,6 +78,7 @@ $variavel testada possui o valor null
 {{-- dd inspenciona uma váriavel e nos mostra um print do que ela contém em tela--}}
 {{-- @dd($fornecedores); --}}
 {{-- @dd($fornecedores) --}}
+
 {{-- Como usar o if e else --}}
 @isset($fornecedores)
 @if(count($fornecedores) > 0 && count($fornecedores) < 10 )
@@ -88,4 +88,33 @@ $variavel testada possui o valor null
 @else 
 <h3>Ainda não existem fornecedores cadastrados</h3>
 @endif
+@endisset
+
+{{-- como usar o switch case --}}
+@isset($fornecedores)
+<h3>Testes feitos com Switch Case</h3>
+Fornecedor: {{ $fornecedores[0]['nome'] }}
+<br>
+Status: {{ $fornecedores[0]['status'] }}
+<br>
+CNPJ: {{ $fornecedores[0]['cnpj'] ?? '' }}
+<br> 
+Telefone: ({{ $fornecedores[0]['ddd'] ?? '' }}) {{ $fornecedores[0]['telefone'] ?? '' }}
+ @switch($fornecedores[0]['ddd'])
+   @case('11')
+      <b>Telefone de São Paulo - SP</b>
+   <!-- Colocar o break, pra que quando o código chegar aqui,
+   execute e pare, se não irá percorrer o restante dos casos! -->
+   @break   
+   @case('64')
+       <b>Telefone de Ipameri - Goiás</b>
+   @break
+   @case('62')
+        <b>Telefone de Goiânia - Goiás</b>
+   @break
+   <!-- Seria como o else do if, cairia aqui, caso nenhum
+   dos outros casos aparececem -->
+   @Default
+        <b>Estado não identificado</b>          
+ @endswitch
 @endisset
