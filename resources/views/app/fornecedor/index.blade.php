@@ -119,7 +119,7 @@ $variavel testada possui o valor null
 
 {{-- Trabalhando com laço de repetição while --}}
 @isset($fornecedores)
-    <h3>Testes feitos com Switch Case e utilizando while</h3>
+    <h3>Testes feitos com Switch Case e utilizando While</h3>
 {{-- Diferente do for, aqui temos que criar o i separadamente --}}
 {{-- poderiamos enviar esta variavel via controller, mas, 
 não faz sentido vist que ela será usada somente no laço --}}    
@@ -158,19 +158,19 @@ não faz sentido vist que ela será usada somente no laço --}}
 <br><br>
 
 {{-- trabalhando com laço de repetição foreach --}}
-{{-- @isset($fornecedores)
-    <h3>Testes feitos com Switch Case e utilizando while</h3>    
-@foreach ( as )
+@isset($fornecedores)
+    <h3>Testes feitos com Switch Case e utilizando ForEach</h3>    
+@foreach ($fornecedores as $indice => $fornecedor)
       <br>
-      Fornecedor: {{ $fornecedores[$i]['nome'] }}
+      Fornecedor: {{ $fornecedor['nome'] }}
       <br>
-      Status: {{ $fornecedores[$i]['status'] }}
+      Status: {{ $fornecedor['status'] }}
       <br>
-      CNPJ: {{ $fornecedores[$i]['cnpj'] ?? '' }}
+      CNPJ: {{ $fornecedor['cnpj'] ?? '' }}
       <br> 
-      Telefone: ({{ $fornecedores[$i]['ddd'] ?? '' }}) {{ $fornecedores[$i]['telefone'] ?? '' }}
+      Telefone: ({{ $fornecedor['ddd'] ?? '' }}) {{ $fornecedor['telefone'] ?? '' }}
       <br>
-@switch($fornecedores[$i]['ddd'])
+@switch($fornecedor['ddd'])
       @case('11')
          <b>Telefone de São Paulo - SP</b>
          <hr> 
@@ -183,11 +183,10 @@ não faz sentido vist que ela será usada somente no laço --}}
          <b>Telefone de Goiânia - Goiás</b>
          <hr> 
       @break
-      @Default
+      @default
          <b>Estado não identificado</b>  
          <hr>         
      @endswitch
    @endforeach  
-  @endwhile
-@endisset --}}
+@endisset
 
