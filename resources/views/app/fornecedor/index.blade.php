@@ -2,24 +2,10 @@
 
 <!--A baixo temos comentários em Blade -->
 {{-- Fica o comentário que será descartado pelo interpretador do blade --}}
-
 {{-- Adicionar o php no blade --}}
 
-{{' Olá Mundo! '}}
-
-<?php
-  //Comentários de uma linha
-  /*
-     Comentários de múltiplas linhas 
-  */
-  
-  /* 
-     if(!<condicao>) {} //enquanto executa se o retorno for true  
-  */
- 
-
-
-?>
+<!-- First Hello Word in Blade/Php -->
+{{-- {{' Olá Mundo! '}} --}}
 
 {{-- @unless executa se o retorno for false --}}
 @isset($fornecedores)
@@ -152,8 +138,6 @@ não faz sentido vist que ela será usada somente no laço --}}
       @case('11')
          <b>Telefone de São Paulo - SP</b>
          <hr> 
-      <!-- Colocar o break, pra que quando o código chegar aqui,
-      execute e pare, se não irá percorrer o restante dos casos! -->
       @break   
       @case('64')
          <b>Telefone de Ipameri - Goiás</b>
@@ -163,12 +147,47 @@ não faz sentido vist que ela será usada somente no laço --}}
          <b>Telefone de Goiânia - Goiás</b>
          <hr> 
       @break
-      <!-- Seria como o else do if, cairia aqui, caso nenhum
-      dos outros casos aparececem -->
-      @Default
+      @default
          <b>Estado não identificado</b>  
          <hr>         
      @endswitch
     @php $i++ @endphp
   @endwhile
 @endisset
+
+<br><br>
+
+{{-- trabalhando com laço de repetição foreach --}}
+{{-- @isset($fornecedores)
+    <h3>Testes feitos com Switch Case e utilizando while</h3>    
+@foreach ( as )
+      <br>
+      Fornecedor: {{ $fornecedores[$i]['nome'] }}
+      <br>
+      Status: {{ $fornecedores[$i]['status'] }}
+      <br>
+      CNPJ: {{ $fornecedores[$i]['cnpj'] ?? '' }}
+      <br> 
+      Telefone: ({{ $fornecedores[$i]['ddd'] ?? '' }}) {{ $fornecedores[$i]['telefone'] ?? '' }}
+      <br>
+@switch($fornecedores[$i]['ddd'])
+      @case('11')
+         <b>Telefone de São Paulo - SP</b>
+         <hr> 
+      @break   
+      @case('64')
+         <b>Telefone de Ipameri - Goiás</b>
+         <hr> 
+      @break
+      @case('62')
+         <b>Telefone de Goiânia - Goiás</b>
+         <hr> 
+      @break
+      @Default
+         <b>Estado não identificado</b>  
+         <hr>         
+     @endswitch
+   @endforeach  
+  @endwhile
+@endisset --}}
+
