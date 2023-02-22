@@ -190,3 +190,47 @@ não faz sentido vist que ela será usada somente no laço --}}
    @endforeach  
 @endisset
 
+<br><br>
+
+{{-- Trabalhando com forelse --}}
+@isset($fornecedores)
+    <h3>Testes feitos com Switch Case e utilizando ForElse</h3>    
+{{-- O operador forelse, uni o laço de repetição for, com
+a condição forelse, entrando no laço somente se o array tiver alguma 
+posição preenchida --}}
+@forelse($fornecedores as $indice => $fornecedor)
+      <br>
+      Fornecedor: {{ $fornecedor['nome'] }}
+      <br>
+      Status: {{ $fornecedor['status'] }}
+      <br>
+      CNPJ: {{ $fornecedor['cnpj'] ?? '' }}
+      <br> 
+      Telefone: ({{ $fornecedor['ddd'] ?? '' }}) {{ $fornecedor['telefone'] ?? '' }}
+      <br>
+@switch($fornecedor['ddd'])
+      @case('11')
+         <b>Telefone de São Paulo - SP</b>
+         <hr> 
+      @break   
+      @case('64')
+         <b>Telefone de Ipameri - Goiás</b>
+         <hr> 
+      @break
+      @case('62')
+         <b>Telefone de Goiânia - Goiás</b>
+         <hr> 
+      @break
+      @default
+         <b>Estado não identificado</b>  
+         <hr>         
+     @endswitch
+  <!-- se não houver nenhum item no array, o mesmo cairá no empty -->
+    @empty 
+       <h3>Não existem fornecedores cadastrados!!!</h3>
+   
+   @endforelse  
+@endisset
+
+
+
