@@ -129,9 +129,46 @@ $variavel testada possui o valor null
  @endfor 
 @endisset
 
-{{-- Trabalhando com laço de repetição for --}}
-{{-- <br><br>
-<h3>Trabalhando com for</h3>
-@for($i =0; $i < 10; $i++)
-    {{ $i }} <br>
-@endfor --}}
+<br><br>
+
+{{-- Trabalhando com laço de repetição while --}}
+@isset($fornecedores)
+    <h3>Testes feitos com Switch Case e utilizando while</h3>
+{{-- Diferente do for, aqui temos que criar o i separadamente --}}
+{{-- poderiamos enviar esta variavel via controller, mas, 
+não faz sentido vist que ela será usada somente no laço --}}    
+@php $i = 0 @endphp
+  @while(isset($fornecedores[$i]))
+      <br>
+      Fornecedor: {{ $fornecedores[$i]['nome'] }}
+      <br>
+      Status: {{ $fornecedores[$i]['status'] }}
+      <br>
+      CNPJ: {{ $fornecedores[$i]['cnpj'] ?? '' }}
+      <br> 
+      Telefone: ({{ $fornecedores[$i]['ddd'] ?? '' }}) {{ $fornecedores[$i]['telefone'] ?? '' }}
+      <br>
+@switch($fornecedores[$i]['ddd'])
+      @case('11')
+         <b>Telefone de São Paulo - SP</b>
+         <hr> 
+      <!-- Colocar o break, pra que quando o código chegar aqui,
+      execute e pare, se não irá percorrer o restante dos casos! -->
+      @break   
+      @case('64')
+         <b>Telefone de Ipameri - Goiás</b>
+         <hr> 
+      @break
+      @case('62')
+         <b>Telefone de Goiânia - Goiás</b>
+         <hr> 
+      @break
+      <!-- Seria como o else do if, cairia aqui, caso nenhum
+      dos outros casos aparececem -->
+      @Default
+         <b>Estado não identificado</b>  
+         <hr>         
+     @endswitch
+    @php $i++ @endphp
+  @endwhile
+@endisset
