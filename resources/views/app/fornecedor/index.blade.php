@@ -76,6 +76,27 @@ $variavel testada possui o valor null
 @endif
 @endisset
 
+
+{{-- Escapando a tag de impressão do blade --}}
+@isset($fornecedores)
+    <h3>Comandos, como foram impressos as posições do array</h3>    
+@forelse($fornecedores as $indice => $fornecedor)
+      <br>
+      Fornecedor: @{{ $fornecedor['nome'] }}
+      <br>
+      Status: @{{ $fornecedor['status'] }}
+      <br>
+      CNPJ: @{{ $fornecedor['cnpj'] ?? '' }}
+      <br> 
+      Telefone: (@{{ $fornecedor['ddd'] ?? '' }}) @{{ $fornecedor['telefone'] ?? '' }}
+      <br>
+    @empty 
+       <h3>Não existem fornecedores cadastrados!!!</h3>   
+   @endforelse  
+@endisset
+
+<br>
+
 {{-- como usar o switch case --}}
 @isset($fornecedores)
  
@@ -115,7 +136,7 @@ $variavel testada possui o valor null
  @endfor 
 @endisset
 
-<br><br>
+<br>
 
 {{-- Trabalhando com laço de repetição while --}}
 @isset($fornecedores)
@@ -155,7 +176,7 @@ não faz sentido vist que ela será usada somente no laço --}}
   @endwhile
 @endisset
 
-<br><br>
+<br>
 
 {{-- trabalhando com laço de repetição foreach --}}
 @isset($fornecedores)
