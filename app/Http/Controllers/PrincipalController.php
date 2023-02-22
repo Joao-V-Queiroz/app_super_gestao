@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class PrincipalController extends Controller
 {
     //método ou action, será chamado pela rota
-    public function principal(){
+    public function Principal(){
        return view('site.principal');
     }
 }

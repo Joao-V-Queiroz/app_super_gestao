@@ -11,8 +11,8 @@ use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\TesteController;
 
 //nomeando rotas, aula 37, use o método ->name(), após a rota
-Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
-Route::get('/sobre-nos', [SobreNosController::class, 'sobre-nos'])->name('site.sobre-nos');
+Route::get('/', [PrincipalController::class, 'Principal'])->name('site.principal');
+Route::get('/sobre-nos', [SobreNosController::class, 'sobreNos'])->name('site.sobre-nos');
 Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
 Route::get('/login',   [LoginController::class, 'login'])->name('site.login');
 
