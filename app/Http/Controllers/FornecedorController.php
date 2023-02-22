@@ -23,7 +23,7 @@ class FornecedorController extends Controller
          'telefone' => '99370-7070'
        ],
        2 =>  [
-        'nome' => 'Fornecedor 2', 
+        'nome' => 'Fornecedor 3', 
         'status' => 'S', 
         'cnpj' => null,
         'ddd' => '11', //São Paulo (SP)

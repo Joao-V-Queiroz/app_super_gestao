@@ -92,29 +92,46 @@ $variavel testada possui o valor null
 
 {{-- como usar o switch case --}}
 @isset($fornecedores)
-<h3>Testes feitos com Switch Case</h3>
-Fornecedor: {{ $fornecedores[0]['nome'] }}
-<br>
-Status: {{ $fornecedores[0]['status'] }}
-<br>
-CNPJ: {{ $fornecedores[0]['cnpj'] ?? '' }}
-<br> 
-Telefone: ({{ $fornecedores[0]['ddd'] ?? '' }}) {{ $fornecedores[0]['telefone'] ?? '' }}
- @switch($fornecedores[0]['ddd'])
-   @case('11')
-      <b>Telefone de São Paulo - SP</b>
-   <!-- Colocar o break, pra que quando o código chegar aqui,
-   execute e pare, se não irá percorrer o restante dos casos! -->
-   @break   
-   @case('64')
-       <b>Telefone de Ipameri - Goiás</b>
-   @break
-   @case('62')
-        <b>Telefone de Goiânia - Goiás</b>
-   @break
-   <!-- Seria como o else do if, cairia aqui, caso nenhum
-   dos outros casos aparececem -->
-   @Default
-        <b>Estado não identificado</b>          
- @endswitch
+ 
+      <h3>Testes feitos com Switch Case e utilizando For</h3>
+ 
+ @for($i=0; isset($fornecedores[$i]); $i++)
+      <br>
+      Fornecedor: {{ $fornecedores[$i]['nome'] }}
+      <br>
+      Status: {{ $fornecedores[$i]['status'] }}
+      <br>
+      CNPJ: {{ $fornecedores[$i]['cnpj'] ?? '' }}
+      <br> 
+      Telefone: ({{ $fornecedores[$i]['ddd'] ?? '' }}) {{ $fornecedores[$i]['telefone'] ?? '' }}
+      <br>
+@switch($fornecedores[$i]['ddd'])
+      @case('11')
+         <b>Telefone de São Paulo - SP</b>
+         <hr> 
+      <!-- Colocar o break, pra que quando o código chegar aqui,
+      execute e pare, se não irá percorrer o restante dos casos! -->
+      @break   
+      @case('64')
+         <b>Telefone de Ipameri - Goiás</b>
+         <hr> 
+      @break
+      @case('62')
+         <b>Telefone de Goiânia - Goiás</b>
+         <hr> 
+      @break
+      <!-- Seria como o else do if, cairia aqui, caso nenhum
+      dos outros casos aparececem -->
+      @Default
+         <b>Estado não identificado</b>  
+         <hr>         
+   @endswitch
+ @endfor 
 @endisset
+
+{{-- Trabalhando com laço de repetição for --}}
+{{-- <br><br>
+<h3>Trabalhando com for</h3>
+@for($i =0; $i < 10; $i++)
+    {{ $i }} <br>
+@endfor --}}
