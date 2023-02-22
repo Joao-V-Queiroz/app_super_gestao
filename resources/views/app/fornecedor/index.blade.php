@@ -183,6 +183,8 @@ não faz sentido vist que ela será usada somente no laço --}}
     <h3>Testes feitos com Switch Case e utilizando ForEach</h3>    
 @foreach ($fornecedores as $indice => $fornecedor)
       <br>
+      Iteração atual: {{ $loop->iteration }}
+      <br>
       Fornecedor: {{ $fornecedor['nome'] }}
       <br>
       Status: {{ $fornecedor['status'] }}
@@ -190,6 +192,15 @@ não faz sentido vist que ela será usada somente no laço --}}
       CNPJ: {{ $fornecedor['cnpj'] ?? '' }}
       <br> 
       Telefone: ({{ $fornecedor['ddd'] ?? '' }}) {{ $fornecedor['telefone'] ?? '' }}
+      @if($loop->first)
+        Primeira iteração do Loop
+      @endif
+      <br>
+      @if($loop->last)
+        Última iteração do Loop
+        <br>
+        Total de registros: {{$loop->count}}
+      @endif
       <br>
 @switch($fornecedor['ddd'])
       @case('11')
@@ -221,6 +232,8 @@ a condição forelse, entrando no laço somente se o array tiver alguma
 posição preenchida --}}
 @forelse($fornecedores as $indice => $fornecedor)
       <br>
+      Iteração atual: {{ $loop->iteration }}
+      <br>
       Fornecedor: {{ $fornecedor['nome'] }}
       <br>
       Status: {{ $fornecedor['status'] }}
@@ -228,6 +241,15 @@ posição preenchida --}}
       CNPJ: {{ $fornecedor['cnpj'] ?? '' }}
       <br> 
       Telefone: ({{ $fornecedor['ddd'] ?? '' }}) {{ $fornecedor['telefone'] ?? '' }}
+      @if($loop->first)
+        Primeira iteração do Loop
+      @endif
+      <br>
+      @if($loop->last)
+        Última iteração do Loop
+        <br>
+        Total de registros: {{$loop->count}}
+      @endif
       <br>
 @switch($fornecedor['ddd'])
       @case('11')
