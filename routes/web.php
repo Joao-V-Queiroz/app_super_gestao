@@ -10,6 +10,10 @@ use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\TesteController;
 
+//exemplo rota sem controller
+Route::get('/welcome', function () {
+  return view('welcome');
+});
 //nomeando rotas, aula 37, use o método ->name(), após a rota
 Route::get('/', [PrincipalController::class, 'Principal'])->name('site.principal');
 Route::get('/sobre-nos', [SobreNosController::class, 'sobreNos'])->name('site.sobre-nos');
